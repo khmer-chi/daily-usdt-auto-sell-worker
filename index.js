@@ -21,7 +21,7 @@ const max = new MAX({
     const order = await max.rest.spotWallet.submitOrder({
       market: 'usdttwd',
       side: 'sell', // Sell USDT for TWD
-      volume: '22', // Amount of USDT to sell
+      volume: '20', // Amount of USDT to sell
       ord_type: 'market', // Limit order
     });
     console.log('Sell Order Placed:', order);
