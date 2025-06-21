@@ -15,13 +15,30 @@ const max = new MAX({
   accessKey: process.env.MAX_API_KEY,
   secretKey: process.env.MAX_API_SECRET,
 });
-
+const customCeil = (value, count = 2) => {
+  const base = 10 ** count
+  return (Math.ceil((value * base)) / base).toFixed(count)
+}
 (async () => {
   try {
+    const twdAmount = customCeil(0.5 / 0.0015); //保持最低手續費，因為0.5會四捨五入成1元，1元會開發票
+
+    // 獲取 usdttwd 交易對的當前市場價格
+    const ticker = await max.rest.getTicker({ market: 'usdttwd' });
+    const currentPrice = parseFloat(ticker.last); // 假設 ticker.last 是最新價格（TWD/USDT）
+
+    if (!currentPrice) {
+      throw new Error('Failed to fetch market price for usdttwd');
+    }
+
+    // 計算需要的 USDT 數量
+    const volume = customCeil(twdAmount / currentPrice); // volume = TWD 金額 ÷ 價格（TWD/USDT）
+    console.log(`Calculated USDT volume: ${volume} USDT at price ${currentPrice} TWD/USDT`);
+    return
     const order = await max.rest.spotWallet.submitOrder({
       market: 'usdttwd',
       side: 'sell', // Sell USDT for TWD
-      volume: '9', // Amount of USDT to sell
+      volume,
       ord_type: 'market', // Limit order
     });
     console.log('Sell Order Placed:', order);
