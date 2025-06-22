@@ -8,11 +8,17 @@ importers:
 
   .:
     devDependencies:
+      dotenv:
+        specifier: ^16.5.0
+        version: 16.5.0
       max-exchange-api-node:
         specifier: ^3.0.2
         version: 3.0.2
+      miniflare:
+        specifier: ^4.20250617.3
+        version: 4.20250617.3
       typescript:
-        specifier: ^5.5.2
+        specifier: ^5.8.3
         version: 5.8.3
       wrangler:
         specifier: ^4.20.5
@@ -385,6 +391,10 @@ packages:
     resolution: {integrity: sha512-3UDv+G9CsCKO1WKMGw9fwq/SWJYbI0c5Y7LU1AXYoDdbhE2AHQ6N6Nb34sG8Fj7T5APy8qXDCKuuIHd1BR0tVA==}
     engines: {node: '>=8'}
 
+  dotenv@16.5.0:
+    resolution: {integrity: sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg==}
+    engines: {node: '>=12'}
+
   esbuild@0.25.4:
     resolution: {integrity: sha512-8pgjLUcUjcgDg+2Q4NYXnPbo/vncAY4UmyaCm0jZevERqCHZIaWwdJHkf8XQtu4AxSKCdvrUbT0XUr1IdZzI8Q==}
     engines: {node: '>=18'}
@@ -747,6 +757,8 @@ snapshots:
   defu@6.1.4: {}
 
   detect-libc@2.0.4: {}
+
+  dotenv@16.5.0: {}
 
   esbuild@0.25.4:
     optionalDependencies:

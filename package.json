@@ -2,6 +2,7 @@
 	"name": "daily-usdt-auto-sell-worker",
 	"version": "0.0.0",
 	"private": true,
+	"type": "module",
 	"scripts": {
 		"deploy": "wrangler deploy --env production",
 		"dev": "wrangler dev --test-scheduled",
@@ -11,8 +12,10 @@
 		"tail": "pnpm wrangler tail --env production"
 	},
 	"devDependencies": {
+		"dotenv": "^16.5.0",
 		"max-exchange-api-node": "^3.0.2",
-		"typescript": "^5.5.2",
+		"miniflare": "^4.20250617.3",
+		"typescript": "^5.8.3",
 		"wrangler": "^4.20.5"
 	}
 }
