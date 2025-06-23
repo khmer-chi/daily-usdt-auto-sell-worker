@@ -1,5 +1,19 @@
 {
-	"files.associations": {
-		"wrangler.json": "jsonc"
-	}
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "css.validate": false,
+  "scss.validate": false,
+  "biome.enabled": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "biomejs.biome",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "always"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "Wscats.vue",
+  }
 }
