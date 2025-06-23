@@ -12,6 +12,7 @@
 		"tail": "pnpm wrangler tail --env production"
 	},
 	"devDependencies": {
+		"@types/node": "^24.0.3",
 		"dotenv": "^16.5.0",
 		"max-exchange-api-node": "^3.0.2",
 		"ts-node": "^10.9.2",
