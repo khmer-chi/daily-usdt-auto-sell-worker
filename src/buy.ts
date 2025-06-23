@@ -1,6 +1,4 @@
 import { MAX } from 'max-exchange-api-node';
-// import { fetchTicker } from './fetchTicker';
-import { makeRequest } from './makeRequest';
 const customCeil = (value: number, count = 2) => {
   const base = 10 ** count
   const result = (Math.ceil((value * base)) / base)
@@ -25,8 +23,6 @@ export const buy = async (accessKey: string, secretKey: string) => {
   // 計算需要的 USDT 數量
   const volume = customCeil(twdAmount / currentPrice, 2).toFixed(2); // volume = TWD 金額 ÷ 價格（TWD/USDT）
   messageArray.push(`Calculated USDT volume: ${volume} USDT at price ${currentPrice} TWD/USDT`)
-
-  return messageArray.join("\n")
 
   const order = await max.rest.spotWallet.submitOrder({
     market: 'usdttwd',

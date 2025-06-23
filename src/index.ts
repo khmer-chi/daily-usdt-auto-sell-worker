@@ -15,8 +15,7 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-import { buy } from "./buy";
-import { sendTelegramMessage } from "./sendTelegramMessage";
+import { exec } from "./exec";
 
 export default {
 	async fetch(req) {
@@ -28,12 +27,8 @@ export default {
 
 	// The scheduled handler is invoked at the interval set in our wrangler.jsonc's
 	// [[triggers]] configuration.
-	async scheduled(event, env, ctx): Promise<void> {
-
-		const message = await buy(env.MAX_API_KEY, env.MAX_API_SECRET);
-
-		console.log(`trigger fired at ${event.cron}: ${message}`);
-		await sendTelegramMessage(env.TELEGRAM_BOT_TOKEN, env.TELEGRAM_CHAT_ID, message);
+	async scheduled(_event, env, ctx): Promise<void> {
+		await exec(env)
 		ctx.waitUntil(Promise.resolve());
 	},
 } satisfies ExportedHandler<Env>;
